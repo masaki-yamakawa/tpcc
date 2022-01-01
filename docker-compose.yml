@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  tpcc:
+    image: tpcc:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./config:/app/config
+    command: bash
+#    command: >
+#      bash -c 
+#        'gfsh start locator --name=`hostname` \
+#         --force \
+#         --mcast-port=0 \
+#         --hostname-for-clients=localhost \
+#         --jmx-manager-hostname-for-clients=localhost \
+#         --enable-cluster-configuration=false \
+#         --properties-file=/config/locator.properties \
+#         --max-heap=512m \
+#         && tail -f /`hostname`/`hostname`.log'
+
